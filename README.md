@@ -1,24 +1,31 @@
-# README
+# Sanctions Aggregator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## The project requirements
 
-Things you may want to cover:
+Ruby 3.0.2
+Postgres >= 9
 
-* Ruby version
+## Setup local environment
 
-* System dependencies
+1. [Install Postgres](https://www.postgresqltutorial.com/install-postgresql) on your PC
+1. Clone the project repository:
+```git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git ```
+1. Install required gems: ```bundle install```
+1. Create the project .env file: ```cp .env.dist .env```
+1. Update postgres server configuration in the ```.env``` file
+1. Create database: ```bundle exec rails db:create```
+1. Run migrations: ```bundle exec rails db:migrate```
+1. Run local server: ```bundle exec rails s```
+1. Open [project](http://localhost:3000) in your browser
 
-* Configuration
+## Run linters 
 
-* Database creation
+1. ```bundle exec rubocop```
+1. ```bundle exec brakeman```
+1. ```bundle-audit check --update```
+1. ```bundle leak check --update```
+1. ```bundle exec database_consistency```
 
-* Database initialization
+## Run tests
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bundle exec rspec```
