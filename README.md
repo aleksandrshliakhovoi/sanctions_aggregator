@@ -9,7 +9,7 @@ Postgres >= 9
 
 1. [Install Postgres](https://www.postgresqltutorial.com/install-postgresql) on your PC
 1. Clone the project repository:
-```git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git ```
+```git clone git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git```
 1. Install required gems: ```bundle install```
 1. Create the project .env file: ```cp .env.dist .env```
 1. Update postgres server configuration in the ```.env``` file
