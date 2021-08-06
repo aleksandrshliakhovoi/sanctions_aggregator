@@ -8,6 +8,13 @@ Postgres >= 9
 ## Setup local environment
 
 1. [Install Postgres](https://www.postgresqltutorial.com/install-postgresql) on your PC
+1. Add a user in Postgres ():
+   * Connect to DB as root (default password ```postgres```):
+   ```psql -h localhost -u postgres```
+   * In the opened postgres console run command to create a new user (replace ```user_name``` an ```password``` by your 
+     values): ```create user user_name with encrypted password 'password';```
+   * In the opened postgres console run command to grant required privileges to this new user (replace ```user_name```  by your
+     value): ```ALTER USER user_name CREATEDB;```
 1. Clone the project repository:
 ```git clone git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git```
 1. Install required gems: ```bundle install```
