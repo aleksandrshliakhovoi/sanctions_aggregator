@@ -1,13 +1,10 @@
 image: ruby:3.0.2
 
 before_script:
-  - gem install brakeman
-  - gem install bundle-audit
-  - gem install bundler-leak
-  - gem install database_consistency
-  - gem install rubocop
-  - gem install rubocop-rails
-  - gem install rubocop-rails_config
+  - cp config/database-gitlab.yml config/database.yml
+  - gem install bundler --path vendor
+  - bundle install --no-document
+  - RAILS_ENV=test bundle exec rails db:create db:migrate
 
 cache:
   paths:
@@ -18,6 +15,7 @@ services:
 
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
+  CI_DB_HOST: postgres
   CI_USER: "postgres"
   CI_DB_PASSWORD: ""
   CI_DB_NAME: "sanctions"
@@ -39,10 +37,6 @@ rspec:
   stage: test
   script:
     - apt-get update -qq && apt-get install -yqq nodejs
-    - gem install bundler
-    - bundle install -j $(nproc) --path vendor
-    - RAILS_ENV=test bundle exec rake db:create
-    - RAILS_ENV=test bundle exec rake db:migrate
     - RAILS_ENV=test bundle exec rspec
   artifacts:
     paths:
