@@ -29,7 +29,6 @@ run_linters:
     - gem install bundle-audit
     - gem install bundler-leak
     - gem install database_consistency
-    - bundle exec rubocop
     - bundle exec brakeman
     - bundle-audit check --update
     - bundle leak check --update
