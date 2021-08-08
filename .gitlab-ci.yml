@@ -7,7 +7,7 @@ cache:
 before_script:
   - cp config/database-gitlab.yml config/database.yml
   - gem install bundler
-  - bundle install --no-document --path vendor
+  - bundle install --path vendor
   - RAILS_ENV=test bundle exec rails db:create db:migrate
 
 services:
