@@ -1,14 +1,14 @@
 image: ruby:3.0.2
 
-before_script:
-  - cp config/database-gitlab.yml config/database.yml
-  - gem install bundler --path vendor
-  - bundle install --no-document
-  - RAILS_ENV=test bundle exec rails db:create db:migrate
-
 cache:
   paths:
     - vendor/ruby
+
+before_script:
+  - cp config/database-gitlab.yml config/database.yml
+  - gem install bundler
+  - bundle install --no-document --path vendor
+  - RAILS_ENV=test bundle exec rails db:create db:migrate
 
 services:
   - postgres:latest
