@@ -1,5 +1,14 @@
 image: ruby:3.0.2
 
+before_script:
+  - gem install brakeman
+  - gem install bundle-audit
+  - gem install bundler-leak
+  - gem install database_consistency
+  - gem install rubocop
+  - gem install rubocop-rails
+  - gem install rubocop-rails_config
+
 cache:
   paths:
     - vendor/ruby
@@ -9,23 +18,22 @@ services:
 
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
-  CI_HOST: "postgres"
   CI_USER: "postgres"
-  CI_PASSWORD: ""
-  CI_DATABASE: "test_db"
+  CI_DB_PASSWORD: ""
+  CI_DB_NAME: "sanctions"
 
 stages:
   - linters
   - test
 
-rubocop:
+run_linters:
   stage: linters
   script:
-    - gem install rubocop
-    - gem install rubocop-rails
-    - gem install rubocop-rails_config
-    - rubocop app/ lib/
-  allow_failure: true
+    - bundle exec rubocop
+    - bundle exec brakeman
+    - bundle-audit check --update
+    - bundle exec bundler-leak check --update
+    - bundle exec database_consistency
 
 rspec:
   stage: test
