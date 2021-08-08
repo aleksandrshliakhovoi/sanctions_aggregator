@@ -1,0 +1,53 @@
+image: ruby:3.0.2
+
+cache:
+  paths:
+    - vendor/ruby
+
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_HOST_AUTH_METHOD: trust
+  CI_DB_HOST: "postgres"
+  CI_USER: "postgres"
+  CI_DB_PASSWORD: ""
+  CI_DB_NAME: "sanctions"
+
+.install_packages:
+    - gem install rubocop
+    - gem install rubocop-rails
+    - gem install rubocop-rails_config
+    - rubocop app/ lib/
+    - gem install brakeman
+    - gem install bundle-audit
+    - gem install bundler-leak
+    - gem install database_consistency
+
+stages:
+  - linters
+  - test
+
+run_linters:
+  extends: .install_packages
+  stage: linters
+  script:
+    - bundle exec rubocop
+    - bundle exec brakeman
+    - bundle-audit check --update
+    - bundle leak check --update
+    - bundle exec database_consistency
+  allow_failure: true
+
+rspec:
+  stage: test
+  script:
+    - apt-get update -qq && apt-get install -yqq nodejs
+    - gem install bundler
+    - bundle install -j $(nproc) --path vendor
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:migrate
+    - RAILS_ENV=test bundle exec rspec
+  artifacts:
+    paths:
+      - coverage/
