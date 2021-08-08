@@ -15,10 +15,10 @@ services:
 
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
-  CI_DB_HOST: localhost
-  CI_USER: sanctions_user
-  CI_DB_PASSWORD: sanctions_password
-  CI_DB_NAME: sanctions
+  CI_DB_HOST: postgres
+  CI_USER: "postgres"
+  CI_DB_PASSWORD: ""
+  CI_DB_NAME: "sanctions"
 
 stages:
   - linters
@@ -31,7 +31,6 @@ run_linters:
     - bundle exec brakeman
     - bundle exec bundle-audit check --update
     - bundle exec bundler-leak check --update
-    - bundle exec database_consistency
 
 rspec:
   stage: test
