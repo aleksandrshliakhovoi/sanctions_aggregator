@@ -29,7 +29,7 @@ run_linters:
   script:
     - bundle exec rubocop
     - bundle exec brakeman
-    - bundle-audit check --update
+    - bundle exec bundle-audit check --update
     - bundle exec bundler-leak check --update
     - bundle exec database_consistency
 
