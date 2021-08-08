@@ -29,9 +29,9 @@ run_linters:
     - gem install bundle-audit
     - gem install bundler-leak
     - gem install database_consistency
-    - bundle exec brakeman
+    - bundle exec brakeman -A -k --no-skip-vendor
     - bundle-audit check --update
-    - bundle leak check --update
+    - bundle exec bundler-leak check --update
     - bundle exec database_consistency
   allow_failure: true
 
