@@ -16,8 +16,8 @@ services:
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
   CI_DB_HOST: postgres
-  CI_USER: sanctions
-  CI_DB_PASSWORD: sanctions_password
+  CI_USER: sanctions_user
+  CI_DB_PASSWORD: ""
   CI_DB_NAME: sanctions
 
 stages:
