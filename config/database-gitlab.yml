@@ -3,6 +3,6 @@ test:
   encoding: unicode
   pool: 5
   host: postgres
-  database: sanctions
-  username: sanctions_user
+  database: "sanctions"
+  username: "postgres"
   password: "" 
