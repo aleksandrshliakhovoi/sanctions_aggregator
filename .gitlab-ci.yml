@@ -1,5 +1,9 @@
 image: ruby:3.0.2
 
+before_script:
+  - gem install bundler
+  - bundle install
+
 cache:
   paths:
     - vendor/ruby
@@ -21,11 +25,11 @@ stages:
 run_linters:
   stage: linters
   script:
-    - gem install rubocop
-    - gem install rubocop-rails
-    - gem install rubocop-rails_config
-    - rubocop app/ lib/
-  allow_failure: true
+    - bundle exec rubocop
+    - bundle exec brakeman -A -k --no-skip-vendor
+    - bundle-audit check --update
+    - bundle exec bundler-leak check --update
+    - bundle exec database_consistency
 
 rspec:
   stage: test
