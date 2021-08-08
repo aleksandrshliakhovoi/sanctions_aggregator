@@ -1,11 +1,5 @@
 image: ruby:3.0.2
 
-before_script:
-  - cp config/database-gitlab.yml config/database.yml
-  - gem install bundler
-  - bundle install
-  - RAILS_ENV=test bundle exec rails db:create db:migrate db:schema:load
-
 cache:
   paths:
     - vendor/ruby
@@ -15,23 +9,23 @@ services:
 
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
-  CI_DB_HOST: "postgres"
+  CI_HOST: "postgres"
   CI_USER: "postgres"
-  CI_DB_PASSWORD: ""
-  CI_DB_NAME: "sanctions"
+  CI_PASSWORD: ""
+  CI_DATABASE: "test_db"
 
 stages:
   - linters
   - test
 
-run_linters:
+rubocop:
   stage: linters
   script:
-    - bundle exec rubocop
-    - bundle exec brakeman -A -k --no-skip-vendor
-    - bundle-audit check --update
-    - bundle exec bundler-leak check --update
-    - bundle exec database_consistency
+    - gem install rubocop
+    - gem install rubocop-rails
+    - gem install rubocop-rails_config
+    - rubocop app/ lib/
+  allow_failure: true
 
 rspec:
   stage: test
@@ -39,7 +33,9 @@ rspec:
     - apt-get update -qq && apt-get install -yqq nodejs
     - gem install bundler
     - bundle install -j $(nproc) --path vendor
-    - bundle exec rspec
+    - RAILS_ENV=test bundle exec rake db:create
+    - RAILS_ENV=test bundle exec rake db:migrate
+    - RAILS_ENV=test bundle exec rspec
   artifacts:
     paths:
       - coverage/

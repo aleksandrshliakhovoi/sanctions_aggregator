@@ -1,8 +1,0 @@
-test:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  CI_DB_HOST: "postgres"
-  CI_USER: "postgres"
-  CI_DB_PASSWORD: ""
-  CI_DB_NAME: "sanctions"
