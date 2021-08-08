@@ -14,7 +14,13 @@ variables:
   CI_DB_PASSWORD: ""
   CI_DB_NAME: "sanctions"
 
-.install_packages:
+stages:
+  - linters
+  - test
+
+run_linters:
+  stage: linters
+  script:
     - gem install rubocop
     - gem install rubocop-rails
     - gem install rubocop-rails_config
@@ -23,15 +29,6 @@ variables:
     - gem install bundle-audit
     - gem install bundler-leak
     - gem install database_consistency
-
-stages:
-  - linters
-  - test
-
-run_linters:
-  extends: .install_packages
-  stage: linters
-  script:
     - bundle exec rubocop
     - bundle exec brakeman
     - bundle-audit check --update
