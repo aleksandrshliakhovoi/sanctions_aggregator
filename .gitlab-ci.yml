@@ -1,0 +1,42 @@
+image: ruby:3.0.2
+
+cache:
+  paths:
+    - vendor/ruby
+
+before_script:
+  - cp config/database-gitlab.yml config/database.yml
+  - gem install bundler
+  - bundle install --path vendor
+  - RAILS_ENV=test bundle exec rails db:create db:migrate
+
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_HOST_AUTH_METHOD: trust
+  CI_DB_HOST: postgres
+  CI_USER: "postgres"
+  CI_DB_PASSWORD: ""
+  CI_DB_NAME: "sanctions"
+
+stages:
+  - linters
+  - test
+
+run_linters:
+  stage: linters
+  script:
+    - bundle exec rubocop
+    - bundle exec brakeman
+    - bundle exec bundle-audit check --update
+    - bundle exec bundler-leak check --update
+
+rspec:
+  stage: test
+  script:
+    - apt-get update -qq && apt-get install -yqq nodejs
+    - RAILS_ENV=test bundle exec rspec
+  artifacts:
+    paths:
+      - coverage/
