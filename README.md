@@ -7,32 +7,67 @@ Postgres >= 9
 
 ## Setup local environment
 
-1. [Install Postgres](https://www.postgresqltutorial.com/install-postgresql) on your PC
-1. Add a user in Postgres ():
-   * Connect to DB as root (default password ```postgres```):
-   ```psql -h localhost -u postgres```
-   * In the opened postgres console run command to create a new user (replace ```user_name``` an ```password``` by your 
-     values): ```create user user_name with encrypted password 'password';```
-   * In the opened postgres console run command to grant required privileges to this new user (replace ```user_name```  by your
-     value): ```ALTER USER user_name CREATEDB;```
+1. [Install Docker](https://docs.docker.com/get-docker/) on your PC
 1. Clone the project repository:
-```git clone git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git```
-1. Install required gems: ```bundle install```
-1. Create the project .env file: ```cp .env.dist .env```
-1. Update postgres server configuration in the ```.env``` file
-1. Create database: ```bundle exec rails db:create```
-1. Run migrations: ```bundle exec rails db:migrate```
-1. Run local server: ```bundle exec rails s```
+   ```shell
+   git clone git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git && cd sanctions_aggregator
+   ```
+1. Install required gems:
+    ```shell
+    bundle install
+   ```
+1. Create the project .env file:
+   ```shell
+   cp .env.dist .env
+   ```
+1. Update Postgres server configuration in the ```.env``` file (for local development environment update only ```DB_USER``` and ```DB_PASSWORD```)
+1. Start Postgres and Elasticsearch instances using docker-compose:
+   ```shell
+   docker compose up
+   ```
+   to stop these instances you should run:
+   ```shell
+   docker compose down
+   ```
+1. Create database:
+   ```shell
+   bundle exec rails db:create
+   ```
+1. Run migrations:
+   ```shell
+   bundle exec rails db:migrate
+   ```
+1. Run local server:
+   ```shell
+   bundle exec rails s
+   ```
 1. Open [project](http://localhost:3000) in your browser
 
 ## Run linters 
 
-1. ```bundle exec rubocop```
-1. ```bundle exec brakeman```
-1. ```bundle-audit check --update```
-1. ```bundle leak check --update```
-1. ```bundle exec database_consistency```
+1. Rubocop
+   ```shell
+   bundle exec rubocop
+   ```
+1. Brakeman
+   ```shell
+   bundle exec brakeman
+   ```
+1. Bundle-audit
+   ```shell
+   bundle-audit check --update
+   ```
+1. Bundle leak
+   ```shell
+   bundle leak check --update
+   ```
+1. Database_consistency
+   ```shell
+   bundle exec database_consistency
+   ```
 
 ## Run tests
 
-```bundle exec rspec```
+```shell
+bundle exec rspec
+```
