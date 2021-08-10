@@ -34,6 +34,7 @@ group :development do
   gem 'solargraph', '~> 0.43.0'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
+  gem 'lefthook', '~> 0.5.5'
 
 end
 
