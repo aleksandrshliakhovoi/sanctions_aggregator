@@ -9,7 +9,5 @@ pre-commit:
       run: rubocop --force-exclusion {files}
     bundler-leak:
       run: bundle exec bundler-leak
-    database_consistency:
-      run: bundle exec database_consistency
     bundler-audit:
       run: bundle exec bundle-audit
