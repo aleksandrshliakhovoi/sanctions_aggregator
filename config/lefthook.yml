@@ -7,3 +7,9 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.rb"
       run: rubocop --force-exclusion {files}
+    bundler-leak:
+      run: bundle exec bundler-leak
+    database_consistency:
+      run: bundle exec database_consistency
+    bundler-audit:
+      run: bundle exec bundle-audit check --update
