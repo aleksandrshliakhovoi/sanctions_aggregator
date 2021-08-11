@@ -78,6 +78,9 @@ bundle exec rspec
 ```link
 https://github.com/evilmartians/lefthook repo
 ```
+```shell
+lefthook install 
+```
 
 ```shell
 lefthook run pre-commit
