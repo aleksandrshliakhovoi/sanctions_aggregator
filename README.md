@@ -71,3 +71,14 @@ Postgres >= 9
 ```shell
 bundle exec rspec
 ```
+
+
+## Lefthook
+
+```link
+https://github.com/evilmartians/lefthook repo
+```
+
+```shell
+lefthook run pre-commit
+```
