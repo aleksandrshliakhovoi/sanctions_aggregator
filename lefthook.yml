@@ -4,9 +4,7 @@ pre-commit:
     audit:
       run: brakeman --no-pager
     rubocop:
-      files: git diff --name-only --staged
-      glob: "*.rb"
-      run: rubocop --force-exclusion {files}
+      run: bundle exec rubocop
     bundler-leak:
       run: bundle exec bundler-leak
     bundler-audit:

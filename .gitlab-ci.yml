@@ -27,10 +27,7 @@ stages:
 run_linters:
   stage: linters
   script:
-    - bundle exec rubocop
-    - bundle exec brakeman
-    - bundle exec bundle-audit check --update
-    - bundle exec bundler-leak check --update
+    - bundle exec lefthook
 
 rspec:
   stage: test
