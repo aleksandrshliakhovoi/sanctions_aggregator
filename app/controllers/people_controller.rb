@@ -2,6 +2,6 @@
 
 class PeopleController < ApplicationController
   def index
-    @people = Person.all
+    @people = Person.order(:last_name).order(:first_name).page params[:page]
   end
 end
