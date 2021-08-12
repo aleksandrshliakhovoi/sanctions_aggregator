@@ -37,8 +37,21 @@ services:
     ports:
       - "5601:5601"
 
+  redis:
+    image: bitnami/redis:6.2.5
+    container_name: snctions-redis
+    restart: always
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/bitnami/redis/data
+
 volumes:
   db:
     driver: local
   es:
+    driver: local
+  redis:
     driver: local
