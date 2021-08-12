@@ -1,0 +1,27 @@
+<h1>Sanctioned people</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Date of birth</th>
+      <th>Citizenship</th>
+      <th>End Sanctions Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.row_number %></td>
+        <td><%= person.last_name %></td>
+        <td><%= person.first_name %></td>
+        <td><%= person.birthday %></td>
+        <td><%= person.citizenship %></td>
+        <td><%= person.end_sanctions_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

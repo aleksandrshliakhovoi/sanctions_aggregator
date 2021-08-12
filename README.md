@@ -79,3 +79,19 @@ Yarn 1.22.11
 ```shell
 bundle exec rspec
 ```
+
+
+## Lefthook
+Link to gem
+```link
+https://github.com/evilmartians/lefthook repo
+```
+Syncing lefthook file
+```shell
+lefthook install 
+```
+
+Run manually lefthook
+```shell
+lefthook run pre-commit
+```
