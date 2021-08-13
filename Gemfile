@@ -43,7 +43,7 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 2.18'
+  gem 'faker',  '~> 2.18', git: 'https://github.com/stympy/faker'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
   gem 'shoulda-matchers', '~> 5.0'
