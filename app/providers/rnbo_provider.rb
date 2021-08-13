@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RnboProvider < BaseProvider
   def receive_data(url)
     uri = URI(url)
@@ -16,7 +18,6 @@ class RnboProvider < BaseProvider
   end
 
   def validate_source
-    
+    puts validate
   end
 end
-

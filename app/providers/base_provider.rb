@@ -18,6 +18,3 @@ class BaseProvider
     end
   end
 end
-
-
-
