@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem "roo", "~> 2.8.0"
+gem 'kaminari', '~> 1.2', '>= 1.2.1', :git => 'https://github.com/kaminari/kaminari'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
@@ -37,7 +38,6 @@ group :development do
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
   gem 'lefthook', '~> 0.5.5'
-
 end
 
 group :test do
