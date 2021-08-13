@@ -95,3 +95,9 @@ Run manually lefthook
 ```shell
 lefthook run pre-commit
 ```
+
+## Services provided by Docker
+1. Postgres (localhost:5432)
+1. Elasticsearch (localhost:9200)
+1. Kibana (localhost:5601)
+1. Redis (localhost:6379)
