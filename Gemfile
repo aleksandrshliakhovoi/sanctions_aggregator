@@ -48,6 +48,8 @@ group :development do
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
   gem 'lefthook', '~> 0.5.5'
+  gem 'devise'
+
 end
 
 group :test do

@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   resources :people, only: [:index], concerns: :paginatable
 
   mount Sidekiq::Web => "/sidekiq"
+  devise_for :views
+  get 'home/index'
+  devise_for :users
+  root to: "home#index"
+
 end
