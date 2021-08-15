@@ -9,9 +9,9 @@ Person.destroy_all
 
 100.times do |i|
   Person.create(
-    first_name: Faker::Name.unique.name, 
-    last_name: Faker::Name.unique.name,
-    citizenship: Faker::Address.country,
+    first_name: Faker::Name.unique.first_name,
+    last_name: Faker::Name.unique.last_name,
+    citizenship: Faker::Nation.nationality,
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
     source_base: Faker::Bank.name,
     end_sanctions_time: Faker::Date.forward(days: 756)
