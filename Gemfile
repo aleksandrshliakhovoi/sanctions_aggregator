@@ -19,6 +19,7 @@ gem 'searchkick', '~> 4.5', '>= 4.5.2'
 gem 'typhoeus', '~> 1.4'
 gem 'oj', '~> 3.13', '>= 3.13.2'
 gem 'faker', '~> 2.18'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
@@ -48,8 +49,6 @@ group :development do
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
   gem 'lefthook', '~> 0.5.5'
-  gem 'devise'
-
 end
 
 group :test do
