@@ -2,11 +2,15 @@
 
 class PeopleController < ApplicationController
   def index
-    if params[:search]&.present?
-      @people = Person.search params[:search], operator: "or", load: false, page: params[:page]
-      # TODO: Replace this dummy code by ES search
-    else
-      @people = Person.order(:last_name).order(:first_name).page params[:page]
-    end
+    @providers = [] # TODO: Providers list should be here
+    search_by = params[:search] || "*"
+    # provider_ids = params[:providers] || @providers.ids
+    # TODO: Implement filtering by provider id
+    @people = Person.search search_by,
+                            fields: [:first_name, :last_name],
+                            misspellings: false,
+                            match: :text_middle,
+                            load: false,
+                            page: params[:page]
   end
 end

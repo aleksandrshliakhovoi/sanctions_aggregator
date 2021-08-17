@@ -45,6 +45,10 @@ Yarn 1.22.11
    ```shell
    bundle exec rails db:migrate
    ```
+1. Seed test data:
+   ```shell
+   bundle exec rails db:seed
+   ```
 1. Run local server:
    ```shell
    bundle exec rails s
