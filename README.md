@@ -101,3 +101,46 @@ lefthook run pre-commit
 1. Elasticsearch (localhost:9200)
 1. Kibana (localhost:5601)
 1. Redis (localhost:6379)
+
+
+## Sidekiq
+
+Sidekiq
+Link to gem
+```link
+https://github.com/mperham/sidekiq
+```
+
+install it in rails
+```shell
+bundle install
+```
+
+For using sidekiq you have to install redis
+```shell
+$ sudo add-apt-repository ppa:redislabs/redis
+$ sudo apt-get update
+$ sudo apt-get install redis
+```
+
+checkout redis
+```shell
+redis-server -v
+```
+
+run sidekiq
+```shell
+bundle exec sidekiq
+```
+
+create worker 
+```shell
+rails generate sidekiq:worker test
+```
+
+checkout working sidekiq
+```shell
+rails c in your folder
+write next command when it work
+ “HelloWorldWorker.perform_async("easy")”
+```
