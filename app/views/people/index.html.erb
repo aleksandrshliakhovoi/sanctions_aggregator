@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row">
-    <h1 class="col-sm-6">Sanctioned people</h1>
-    <%= render 'search_form'%>
+    <div class="col-sm-6">
+      <h1 class="mb-4">Sanctioned people</h1>
+      <span class="me-3">Found: <%= pluralize(@people.total_count, 'person') %></span>
+      <%= link_to('Reset search filter', root_path) if params[:search].present? || params[:providers].present? %>
+    </div>
+    <div class="col-sm-6">
+      <%= render 'search_form'%>
+    </div>
+  </div>
+  <div class="row">
     <table class="table table-striped my-5">
       <thead>
         <tr>
