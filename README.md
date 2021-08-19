@@ -120,18 +120,6 @@ install it in rails
 bundle install
 ```
 
-For using sidekiq you have to install redis
-```shell
-$ sudo add-apt-repository ppa:redislabs/redis
-$ sudo apt-get update
-$ sudo apt-get install redis
-```
-
-checkout redis
-```shell
-redis-server -v
-```
-
 run sidekiq
 ```shell
 bundle exec sidekiq
@@ -147,4 +135,15 @@ checkout working sidekiq
 rails c in your folder
 write next command when it work
  “HelloWorldWorker.perform_async("easy")”
+```
+Redis working in Docker to install it in localsystem do next steps:
+```shell
+$ sudo add-apt-repository ppa:redislabs/redis
+$ sudo apt-get update
+$ sudo apt-get install redis
+```
+
+checkout redis
+```shell
+redis-server -v
 ```
