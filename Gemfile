@@ -13,10 +13,15 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem "roo", "~> 2.8.0"
+gem 'kaminari', '~> 1.2', '>= 1.2.1', :git => 'https://github.com/kaminari/kaminari'
+gem 'searchkick', '~> 4.5', '>= 4.5.2'
+gem 'typhoeus', '~> 1.4'
+gem 'oj', '~> 3.13', '>= 3.13.2'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+  gem 'faker', '~> 2.18'
 end
 
 group :development do
@@ -36,14 +41,12 @@ group :development do
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
   gem 'lefthook', '~> 0.5.5'
-
 end
 
 group :test do
   gem 'capybara', '>= 3.26'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker',  '~> 2.18', git: 'https://github.com/stympy/faker'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
   gem 'shoulda-matchers', '~> 5.0'

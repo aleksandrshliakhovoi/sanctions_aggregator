@@ -3,18 +3,26 @@
 ## The project requirements
 
 Ruby 3.0.2
-Postgres >= 9
+Postgres >= 9.2
+NodeJS 14.7.4
+Yarn 1.22.11
 
 ## Setup local environment
 
 1. [Install Docker](https://docs.docker.com/get-docker/) on your PC
+1. [Install NodeJS + Npm](https://nodejs.org/en/download/) on your PC
+1. [Install Yarn](https://classic.yarnpkg.com/en/docs/install) on your PC
 1. Clone the project repository:
    ```shell
    git clone git@gitlab.com:pivorak-orsc2021/group5/sanctions_aggregator.git && cd sanctions_aggregator
    ```
 1. Install required gems:
-    ```shell
-    bundle install
+   ```shell
+   bundle install
+   ```
+1. Install required JS packages:
+   ```shell
+   yarn install
    ```
 1. Create the project .env file:
    ```shell
@@ -36,6 +44,10 @@ Postgres >= 9
 1. Run migrations:
    ```shell
    bundle exec rails db:migrate
+   ```
+1. Seed test data:
+   ```shell
+   bundle exec rails db:seed
    ```
 1. Run local server:
    ```shell
@@ -87,3 +99,9 @@ Run manually lefthook
 ```shell
 lefthook run pre-commit
 ```
+
+## Services provided by Docker
+1. Postgres (localhost:5432)
+1. Elasticsearch (localhost:9200)
+1. Kibana (localhost:5601)
+1. Redis (localhost:6379)
