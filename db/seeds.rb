@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 Person.destroy_all
 
 100.times do
@@ -13,8 +15,8 @@ Person.destroy_all
     last_name: Faker::Name.unique.last_name,
     citizenship: Faker::Nation.nationality,
     birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
-    source_base: nil,
-    end_sanctions_time: Faker::Date.forward(days: 756)
+    end_sanctions_time: Faker::Date.forward(days: 756),
+    provider: Provider.take
   )
 end
 

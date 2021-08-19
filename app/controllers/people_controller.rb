@@ -2,12 +2,12 @@
 
 class PeopleController < ApplicationController
   def index
-    @providers = [] # TODO: Providers list should be here
+    @providers = Provider.order(:name).all
     search_by = params[:search] || "*"
-    # provider_ids = params[:providers] || @providers.ids
-    # TODO: Implement filtering by provider id
+    provider_ids = params[:providers] || @providers.ids
     @people = Person.search(search_by,
                             fields: [:first_name, :last_name],
+                            where: { provider_id: provider_ids },
                             misspellings: false,
                             match: :text_middle,
                             load: false,
