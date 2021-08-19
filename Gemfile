@@ -20,7 +20,7 @@ gem 'typhoeus', '~> 1.4'
 gem 'oj', '~> 3.13', '>= 3.13.2'
 gem 'faker', '~> 2.18'
 gem 'devise'
-gem "pundit"
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
