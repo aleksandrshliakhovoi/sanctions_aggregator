@@ -15,6 +15,7 @@ gem 'pg', '~> 1.2', '>= 1.2.3'
 gem "roo", "~> 2.8.0"
 gem 'kaminari', '~> 1.2', '>= 1.2.1', :git => 'https://github.com/kaminari/kaminari'
 gem 'sidekiq', '~>6.0.0'
+gem "sidekiq-cron", "1.2.0"
 gem 'searchkick', '~> 4.5', '>= 4.5.2'
 gem 'typhoeus', '~> 1.4'
 gem 'oj', '~> 3.13', '>= 3.13.2'

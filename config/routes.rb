@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   root to: 'people#index'
 
@@ -6,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :people, only: [:index], concerns: :paginatable
+
+  mount Sidekiq::Web => "/sidekiq"
 end
