@@ -4,6 +4,6 @@ class HelloWorldWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    puts "Hello world"
+    puts 'Hello world'
   end
 end
