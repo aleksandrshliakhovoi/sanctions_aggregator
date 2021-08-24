@@ -7,8 +7,8 @@ class BaseProvider
     @rnbo_sanction_persons = []
   end
 
-  def save_to_db
-    @rnbo_sanction_persons.each do |item|
+  def save_to_db(validate_data)
+    validate_data.each do |item|
       Person.create(item)
     end
   end

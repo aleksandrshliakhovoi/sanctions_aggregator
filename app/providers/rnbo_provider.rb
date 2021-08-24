@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class RnboProvider < BaseProvider
-  PROVIDER_NAME = "РНБО"
+  PROVIDER_ID = 1
 
   def receive_data(url)
     @file = Roo::Spreadsheet.open("./db/sanctions.xlsx")
   end
 
   def validate_individuals
+    rnbo_sanction_persons = []
+
     sanctions_individuals = receive_data("url").sheet("Фізичні особи")
     sheet_header_arr = sanctions_individuals.row(1)
 
@@ -20,7 +22,7 @@ class RnboProvider < BaseProvider
       citezenship: sheet_header_arr[13]
     }
 
-    if validate_individuals?(sheet_header_column)
+    if check_individuals?(sheet_header_column)
       sanctions_individuals.each do |row|
          next if row[0] == "row"
          sanction_individual_person = {
@@ -38,14 +40,15 @@ class RnboProvider < BaseProvider
                                ],
            citizenship:        row[13],
            birthday:           date_handler(row[12]),
-           source_base:        PROVIDER_NAME,
+           provider_id:        PROVIDER_ID,
            end_sanctions_time: date_handler(row[8])
            }
-         @rnbo_sanction_persons << sanction_individual_person if sanction_individual_person.present?
+         rnbo_sanction_persons << sanction_individual_person if sanction_individual_person.present?
        end
     else
       puts "structure wrong"
     end
+    rnbo_sanction_persons
   end
 
   # def validate_entities
@@ -61,7 +64,7 @@ class RnboProvider < BaseProvider
       row_value.split(" ")[el_number] if row_value.present?
     end
 
-    def validate_individuals?(sheet_header_column)
+    def check_individuals?(sheet_header_column)
       if sheet_header_column[:end_date]    ==     "Дата закінчення обмеження" &&
          sheet_header_column[:ukr_name]    ==     "Назва укр." &&
          sheet_header_column[:orig_name]   ==     "Назва ориг." &&
