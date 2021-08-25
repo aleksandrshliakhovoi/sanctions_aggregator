@@ -2,7 +2,6 @@
 
 class SyncService
   def call
-<<<<<<< HEAD
     file =  Roo::Spreadsheet.open('./db/sanctions.xlsx')
     sheet = file.sheet(file.sheets.first)
     sheet.each do |row|
@@ -10,15 +9,6 @@ class SyncService
 
       full_name = row[9]
       last_name, first_name = full_name.split(' ')
-=======
-    file =  Roo::Spreadsheet.open("./db/sanctions.xlsx")
-    sheet = file.sheet(file.sheets.first)
-    sheet.each do |row|
-      next if row[0] == "row"
-
-      full_name = row[9]
-      last_name, first_name = full_name.split(" ")
->>>>>>> fix typos
       birthday = row[12]
       citizenship = row[13]
       end_sanctions_time = row[8]
