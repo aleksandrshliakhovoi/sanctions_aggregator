@@ -9,7 +9,7 @@ class RnboEntityProvider < BaseProvider
 
     if check_entities_file?(table_header_hash)
       receive_data_hash.each do |row|
-        next if row[0] == "row"
+        next if row[0] == 'row'
         sanction_entity_person = {
           first_name:         [ row[9], row[10], row[11] ],
           last_name:          nil,
@@ -21,7 +21,7 @@ class RnboEntityProvider < BaseProvider
         rnbo_sanction_persons << sanction_entity_person if sanction_entity_person.present?
       end
     else
-      puts "error during check"
+      puts 'error during check'
     end
     rnbo_sanction_persons
   end
@@ -44,20 +44,20 @@ class RnboEntityProvider < BaseProvider
     end
 
     def check_entities_file?(table_header_hash)
-      if  table_header_hash[:end_date]    ==     "Дата закінчення обмеження" &&
-          table_header_hash[:ukr_name]    ==     "Назва укр." &&
-          table_header_hash[:orig_name]   ==     "Назва ориг." &&
-          table_header_hash[:alter_name]  ==     "Назва альт." &&
-          table_header_hash[:citizenship] ==     "Місце діяльності"
+      if  table_header_hash[:end_date]    ==     'Дата закінчення обмеження' &&
+          table_header_hash[:ukr_name]    ==     'Назва укр.' &&
+          table_header_hash[:orig_name]   ==     'Назва ориг.' &&
+          table_header_hash[:alter_name]  ==     'Назва альт.' &&
+          table_header_hash[:citizenship] ==     'Місце діяльності'
         true
       else
-        puts "wrong header"
+        puts 'wrong header'
       end
     end
 
     def receive_data
-      file = Roo::Spreadsheet.open("./db/sanctions.xlsx")
+      file = Roo::Spreadsheet.open('./db/sanctions.xlsx')
 
-      file.sheet("Юридичні особи")
+      file.sheet('Юридичні особи')
     end
 end

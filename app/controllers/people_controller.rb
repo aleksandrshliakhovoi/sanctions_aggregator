@@ -3,7 +3,7 @@
 class PeopleController < ApplicationController
   def index
     @providers = Provider.order(:name).all
-    search_by = params[:search] || "*"
+    search_by = params[:search] || '*'
     provider_ids = params[:providers] || @providers.ids
     @people = Person.search(search_by,
                             fields: [:first_name, :last_name],
