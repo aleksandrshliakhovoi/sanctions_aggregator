@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe RnboProvider, tdd: true do
 
   let!(:rnbo) { RnboProvider.new }
-  let(:rnbo_indiv_person) { create(:rnbo_factory_person) }
+  # let(:rnbo_indiv_person) { :rnbo_factory_person }
 
   describe 'receive_data' do  
 
@@ -22,9 +22,18 @@ RSpec.describe RnboProvider, tdd: true do
       expect(validate_data.size).to be > 1000
     end
 
-    # it 'keys should be equal to factory sample' do
-    #   expect(validate_data_instance.keys).to eq(rnbo_indiv_person.keys)
-    # end
+    rnbo_indiv_person = {
+      first_name:         Faker::Name.name,
+      last_name:          Faker::Name.last_name,
+      citizenship:        Faker::Nation.nationality,
+      birthday:           Faker::Date.birthday(min_age: 18, max_age: 65),
+      provider_id:        Faker::Number.between(from: 1, to: 2),
+      end_sanctions_time: Faker::Date.forward(days: 756)
+    }
+
+    it 'keys should be equal to factory sample' do
+      expect(validate_data_instance.keys).to eq(rnbo_indiv_person.keys)
+    end
 
     it 'value class should be array' do
       expect(validate_data.class).to eq(Array)

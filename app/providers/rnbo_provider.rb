@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RnboProvider < BaseProvider
-  PROVIDER_ID = 1
+  PROVIDER_ID_IND = 1
 
   def receive_data(url)
     @file = Roo::Spreadsheet.open("./db/sanctions.xlsx")
@@ -19,10 +19,10 @@ class RnboProvider < BaseProvider
       orig_name: sheet_header_arr[10],
       alter_name: sheet_header_arr[11],
       birth_date: sheet_header_arr[12],
-      citezenship: sheet_header_arr[13]
+      citizenship: sheet_header_arr[13]
     }
 
-    if check_individuals?(sheet_header_column)
+    if check_individuals_file?(sheet_header_column)
       sanctions_individuals.each do |row|
          next if row[0] == "row"
          sanction_individual_person = {
@@ -40,7 +40,7 @@ class RnboProvider < BaseProvider
                                ],
            citizenship:        row[13],
            birthday:           date_handler(row[12]),
-           provider_id:        PROVIDER_ID,
+           provider_id:        PROVIDER_ID_IND,
            end_sanctions_time: date_handler(row[8])
            }
          rnbo_sanction_persons << sanction_individual_person if sanction_individual_person.present?
@@ -51,10 +51,6 @@ class RnboProvider < BaseProvider
     rnbo_sanction_persons
   end
 
-  # def validate_entities
-  #   sanctions_entity = @file.sheet("Юридичні особи")
-  # end
-
   private
     def date_handler(row_value)
       row_value.to_datetime if row_value.present?
@@ -64,13 +60,13 @@ class RnboProvider < BaseProvider
       row_value.split(" ")[el_number] if row_value.present?
     end
 
-    def check_individuals?(sheet_header_column)
+    def check_individuals_file?(sheet_header_column)
       if sheet_header_column[:end_date]    ==     "Дата закінчення обмеження" &&
          sheet_header_column[:ukr_name]    ==     "Назва укр." &&
          sheet_header_column[:orig_name]   ==     "Назва ориг." &&
          sheet_header_column[:alter_name]  ==     "Назва альт." &&
          sheet_header_column[:birth_date]  ==     "Дата народження" &&
-         sheet_header_column[:citezenship] ==     "Громадянство"
+         sheet_header_column[:citizenship] ==     "Громадянство"
         true
       else
         puts "structure wrong"
