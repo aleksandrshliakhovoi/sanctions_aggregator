@@ -21,11 +21,13 @@ gem 'oj', '~> 3.13', '>= 3.13.2'
 gem 'faker', '~> 2.18'
 gem 'devise', '~> 4.2'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
-  gem 'sqlite3', '~> 1.4'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 group :development do
@@ -55,7 +57,6 @@ end
 group :test do
   gem 'capybara', '>= 3.26'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
-  gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem "fakeredis", require: "fakeredis/rspec"
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'

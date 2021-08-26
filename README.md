@@ -134,7 +134,7 @@ checkout working sidekiq
 ```shell
 rails c in your folder
 write next command when it work
- “HelloWorldWorker.perform_async("easy")”
+ "HelloWorldWorker.perform_async('easy')"
 ```
 Redis working in Docker to install it in localsystem do next steps:
 ```shell
@@ -146,4 +146,19 @@ $ sudo apt-get install redis
 checkout redis
 ```shell
 redis-server -v
+```
+## Providers
+
+save individuals to db
+
+```shell
+rnbo = RnboProvider.new
+rnbo.save_to_db(rnbo.validate_individuals)
+```
+
+save entity to db
+
+```shell
+ent = RnboEntityProvider.new
+ent.save_to_db(ent.validate_entities)
 ```
