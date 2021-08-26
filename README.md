@@ -147,3 +147,19 @@ checkout redis
 ```shell
 redis-server -v
 ```
+
+## Providers
+
+save individuals to db
+
+```shell
+rnbo = RnboProvider.new
+rnbo.save_to_db(rnbo.validate_individuals)
+```
+
+save entity to db
+
+```shell
+ent = RnboEntityProvider.new
+ent.save_to_db(ent.validate_entities)
+```
