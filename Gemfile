@@ -19,6 +19,8 @@ gem 'searchkick', '~> 4.5', '>= 4.5.2'
 gem 'typhoeus', '~> 1.4'
 gem 'oj', '~> 3.13', '>= 3.13.2'
 gem 'faker', '~> 2.18'
+gem 'devise', '~> 4.2'
+gem 'pundit', '~> 2.1', '>= 2.1.1'
 
 group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
