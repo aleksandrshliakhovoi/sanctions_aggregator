@@ -6,5 +6,7 @@ class BaseProvider
     validate_data.each do |item|
       Person.create(item || nil)
     end
+
+    Person.reindex
   end
 end
