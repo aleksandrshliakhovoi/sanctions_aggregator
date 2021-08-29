@@ -147,7 +147,6 @@ checkout redis
 ```shell
 redis-server -v
 ```
-<<<<<<< HEAD
 
 ## Providers
 
@@ -164,5 +163,3 @@ save entity to db
 ent = RnboEntityProvider.new
 ent.save_to_db(ent.validate_entities)
 ```
-=======
->>>>>>> 1d910110743194705d99885a2c3a9adf8c8cdfc4
