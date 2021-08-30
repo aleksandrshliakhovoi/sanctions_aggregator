@@ -19,11 +19,11 @@ variables:
   CI_USER: postgres
   CI_DB_PASSWORD: ""
   CI_DB_NAME: sanctions
-  CI_SMTP_HOST: localhost
-  CI_SMTP_PORT: 1025
-  CI_SMTP_USER: mailhog
-  CI_SMTP_PASSWORD: mailhog
-  CI_SMTP_STARTTLS: "false"
+  SMTP_HOST: localhost
+  SMTP_PORT: 1025
+  SMTP_USER: mailhog
+  SMTP_PASSWORD: mailhog
+  SMTP_STARTTLS: "false"
 
 stages:
   - linters
