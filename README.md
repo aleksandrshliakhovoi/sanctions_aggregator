@@ -105,6 +105,7 @@ lefthook run pre-commit
 1. Elasticsearch (localhost:9200)
 1. Kibana (localhost:5601)
 1. Redis (localhost:6379)
+1. MailHog (localhost:8025)
 
 
 ## Sidekiq
