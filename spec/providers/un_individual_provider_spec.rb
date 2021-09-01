@@ -17,8 +17,5 @@ RSpec.describe RnboProvider, tdd: true do
     it 'each element should have predefined structure' do
       
     end
-
-    
   end
-
 end
