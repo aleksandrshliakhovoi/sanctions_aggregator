@@ -30,21 +30,18 @@
           <td><%= person.birthday %></td>
           <td><%= person.citizenship %></td>
           <td><%= person.end_sanctions_time %></td>
-          <td>
+          <td class="py-0">
             <% if @followed_ids.keys.include?(person.id) %>
-              <%= link_to 'Yes',
-                          subscription_path(id: @followed_ids[person.id]),
-                          method: :delete,
-                          remote: true %>
+              <%= button_to 'Yes',
+                            subscription_path(id: @followed_ids[person.id]),
+                            method: :delete,
+                            remote: true,
+                            class: 'btn btn-link' %>
             <% else %>
-              <%= link_to 'No',
-                          subscriptions_path(person: {
-                            first_name: person.first_name,
-                            last_name: person.last_name,
-                            birthday: person.birthday
-                          }),
-                          method: :post,
-                          remote: true %>
+              <%= button_to 'No',
+                            subscriptions_path(person: person),
+                            remote: true,
+                            class: 'btn btn-link' %>
             <% end %>
           </td>
         </tr>

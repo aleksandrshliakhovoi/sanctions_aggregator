@@ -26,7 +26,6 @@ class PeopleController < ApplicationController
                       .where(user: current_user.id)
                       .where(query, *query_params)
                       .each_with_object({}) do |subscription, ids|
-
       f_p = subscription.followed_person
 
       p_id = @people.filter_map do |p|

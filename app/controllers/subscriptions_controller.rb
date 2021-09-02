@@ -26,6 +26,6 @@ class SubscriptionsController < ApplicationController
 
   private
     def create_params
-      params.require(:person).permit([:first_name, :last_name, :birthday])
+      params.require(:person).permit([:first_name, :last_name, :birthday, :citizenship, :end_sanctions_time])
     end
 end

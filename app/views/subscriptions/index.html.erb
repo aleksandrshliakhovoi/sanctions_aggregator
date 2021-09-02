@@ -9,7 +9,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Date Of Birth</th>
-          <th>&nbsp;</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -18,11 +18,12 @@
           <td><%= person.first_name %></td>
           <td><%= person.last_name %></td>
           <td><%= person.birthday %></td>
-          <td>
-            <%= link_to 'Unfollow',
-                        subscription_path(id: person.id),
-                        method: :delete,
-                        remote: true %>
+          <td class="py-0">
+            <%= button_to 'Unfollow',
+                          subscription_path(id: person.id),
+                          method: :delete,
+                          remote: true,
+                          class: 'btn btn-link'%>
           </td>
         </tr>
       <% end %>
