@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RnboEntityProvider < BaseProvider
-  PROVIDER_ID = 2
+  PROVIDER_ID_ENT = 2
 
   def validate_entities
     rnbo_sanction_persons = []

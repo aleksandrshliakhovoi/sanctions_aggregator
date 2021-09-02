@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :people, only: [:index], concerns: :paginatable
+  resources :subscriptions, only: [:index, :create, :destroy], concerns: :paginatable
 
   devise_for :users
 end

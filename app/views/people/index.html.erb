@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
-      <h1 class="mb-4">Sanctioned people</h1>
+      <h1 class="mb-4">Sanctioned People</h1>
       <span class="me-3">Found: <%= pluralize(@people.total_count, 'person') %></span>
       <%= link_to('Reset search filter', root_path) if params[:search].present? || params[:providers].present? %>
     </div>
@@ -15,9 +15,10 @@
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Date of birth</th>
+          <th>Date Of Birth</th>
           <th>Citizenship</th>
           <th>End Sanctions Time</th>
+          <th>Followed</th>
         </tr>
       </thead>
 
@@ -29,6 +30,20 @@
           <td><%= person.birthday %></td>
           <td><%= person.citizenship %></td>
           <td><%= person.end_sanctions_time %></td>
+          <td class="py-0">
+            <% if @followed_ids.keys.include?(person.id) %>
+              <%= button_to 'Yes',
+                            subscription_path(id: @followed_ids[person.id]),
+                            method: :delete,
+                            remote: true,
+                            class: 'btn btn-link' %>
+            <% else %>
+              <%= button_to 'No',
+                            subscriptions_path(person: person),
+                            remote: true,
+                            class: 'btn btn-link' %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>

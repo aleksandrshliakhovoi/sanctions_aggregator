@@ -163,3 +163,4 @@ save entity to db
 ent = RnboEntityProvider.new
 ent.save_to_db(ent.validate_entities)
 ```
+
