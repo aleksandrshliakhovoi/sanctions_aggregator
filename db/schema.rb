@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_124745) do
+ActiveRecord::Schema.define(version: 2021_09_01_223007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "followed_people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthday"
+    t.text "providers", default: [], array: true
+    t.string "citizenship"
+    t.date "end_sanctions_time"
+    t.integer "matching_people"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "followed_person_change_logs", force: :cascade do |t|
+    t.bigint "followed_person_id"
+    t.integer "action"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_person_id"], name: "index_followed_person_change_logs_on_followed_person_id"
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "first_name"
@@ -33,6 +54,14 @@ ActiveRecord::Schema.define(version: 2021_08_30_124745) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_providers_on_name"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "followed_person_id"
+    t.boolean "has_events", default: false
+    t.index ["followed_person_id"], name: "index_subscriptions_on_followed_person_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

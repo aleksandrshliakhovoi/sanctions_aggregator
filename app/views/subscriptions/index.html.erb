@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <h1 class="mb-4">Followed People</h1>
+  </div>
+  <div class="row">
+    <table class="table table-striped my-5">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date Of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @followed_people.each do |person| %>
+        <tr>
+          <td><%= person.first_name %></td>
+          <td><%= person.last_name %></td>
+          <td><%= person.birthday %></td>
+          <td class="py-0">
+            <%= button_to 'Unfollow',
+                          subscription_path(id: person.id),
+                          method: :delete,
+                          remote: true,
+                          class: 'btn btn-link'%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="container pagination justify-content-center">
+      <%= paginate @followed_people, pagination_class: "pagination-sm" %>
+    </div>
+  </div>
+</div>
