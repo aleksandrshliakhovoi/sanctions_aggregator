@@ -48,6 +48,14 @@ services:
     volumes:
       - redis:/bitnami/redis/data
 
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: sanctions-mailhog
+    restart: always
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
 volumes:
   db:
     driver: local

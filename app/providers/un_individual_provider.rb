@@ -2,7 +2,7 @@
 
 require 'open-uri'
 class UnIndividualProvider < BaseProvider
-  PROVIDER_ID = 1
+  PROVIDER_ID = 3
 
   def handle_data_from_xml
     un_individual_persons = []

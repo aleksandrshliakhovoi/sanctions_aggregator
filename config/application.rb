@@ -17,5 +17,14 @@ module SanctionsAggregator
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_mailer.smtp_settings = {
+      :address => ENV.fetch('SMTP_HOST'),
+      :port => ENV.fetch('SMTP_PORT'),
+      :user_name => ENV.fetch('SMTP_USER'),
+      :password => ENV.fetch('SMTP_PASSWORD'),
+      :authentication => :plain,
+      :enable_starttls_auto => ENV.fetch('SMTP_STARTTLS')
+    }
   end
 end

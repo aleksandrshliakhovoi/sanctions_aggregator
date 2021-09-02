@@ -16,9 +16,14 @@ services:
 variables:
   POSTGRES_HOST_AUTH_METHOD: trust
   CI_DB_HOST: postgres
-  CI_USER: "postgres"
+  CI_USER: postgres
   CI_DB_PASSWORD: ""
-  CI_DB_NAME: "sanctions"
+  CI_DB_NAME: sanctions
+  SMTP_HOST: localhost
+  SMTP_PORT: 1025
+  SMTP_USER: mailhog
+  SMTP_PASSWORD: mailhog
+  SMTP_STARTTLS: "false"
 
 stages:
   - linters

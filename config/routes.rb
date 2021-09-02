@@ -2,6 +2,8 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq"
+
   root to: 'people#index'
 
   concern :paginatable do
@@ -9,10 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :people, only: [:index], concerns: :paginatable
-
-  mount Sidekiq::Web => "/sidekiq"
-  get 'home/index'
-  resources :home, only: [:index]
 
   devise_for :users
 end

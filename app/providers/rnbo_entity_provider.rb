@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RnboEntityProvider < BaseProvider
-  PROVIDER_ID_ENT = 1
+  PROVIDER_ID = 2
 
   def validate_entities
     rnbo_sanction_persons = []
@@ -15,7 +15,7 @@ class RnboEntityProvider < BaseProvider
           last_name:          nil,
           citizenship:        row[14],
           birthday:           nil,
-          provider_id:        PROVIDER_ID_ENT,
+          provider_id:        PROVIDER_ID,
           end_sanctions_time: date_handler(row[8])
         }
         rnbo_sanction_persons << sanction_entity_person if sanction_entity_person.present?
