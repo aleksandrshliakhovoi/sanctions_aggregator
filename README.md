@@ -136,6 +136,7 @@ checkout working sidekiq
 rails c in your folder
 write next command when it work
  "HelloWorldWorker.perform_async('easy')"
+ "UpdateProvidersWorker.perform_async('easy')"
 ```
 Redis working in Docker to install it in localsystem do next steps:
 ```shell

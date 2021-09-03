@@ -7,5 +7,5 @@ Rails.application.reloader.to_prepare do
   }
 
   Sidekiq::Cron::Job.load_from_hash(hash) unless Rails.env.test?
-  Sidekiq::Cron::Job.create(name: 'Save persons to Db - every day', cron: '*/180 * * * *', class: 'UpdateProvidersWorker')
+  Sidekiq::Cron::Job.create(name: 'Save persons to Db - every day', cron: '*10 * * * *', class: 'UpdateProvidersWorker')
 end

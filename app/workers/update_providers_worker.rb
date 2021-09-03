@@ -11,7 +11,7 @@ class UpdateProvidersWorker
     ent.save_to_db(ent.validate_entities)
 
     un_individual = UnIndividualProvider.new
-    un_individual.save_to_db(UnIndividualProvider.new)
+    un_individual.save_to_db(un_individual.handle_data_from_xml)
 
     puts 'Data save to db'
   end

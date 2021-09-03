@@ -7,6 +7,7 @@ RSpec.describe UnIndividualProvider, tdd: true do
   let!(:un) { UnIndividualProvider.new }
   let(:validate_data) { un.handle_data_from_xml }
   let(:validate_data_instance) {validate_data.first}
+  #let(:object) {  }
 
   describe 'validate data handling method' do
     
