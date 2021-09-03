@@ -15,7 +15,7 @@ class RnboEntityProvider < BaseProvider
           last_name:          nil,
           citizenship:        row[14],
           birthday:           nil,
-          provider_id:        PROVIDER_ID,
+          provider_id:        PROVIDER_ID_ENT,
           end_sanctions_time: date_handler(row[8])
         }
         rnbo_sanction_persons << sanction_entity_person if sanction_entity_person.present?
