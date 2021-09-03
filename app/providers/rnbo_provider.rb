@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RnboProvider < BaseProvider
-  PROVIDER_ID_IND = 1
+  PROVIDER_ID_IND = 1 # Provider.find_by(name: 'RNBO-entity')[:id]
 
   def receive_data(url)
     @file = Roo::Spreadsheet.open('./db/sanctions.xlsx')

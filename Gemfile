@@ -21,6 +21,7 @@ gem 'oj', '~> 3.13', '>= 3.13.2'
 gem 'faker', '~> 2.18'
 gem 'devise', '~> 4.2'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
+gem 'nokogiri', '~> 1.12', '>= 1.12.3'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 

@@ -10,6 +10,9 @@ class UpdateProvidersWorker
     ent = RnboEntityProvider.new
     ent.save_to_db(ent.validate_entities)
 
+    un_individual = UnIndividualProvider.new
+    un_individual.save_to_db(UnIndividualProvider.new)
+
     puts 'Data save to db'
   end
 end
